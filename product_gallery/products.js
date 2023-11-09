@@ -1,4 +1,3 @@
-
 const array = [
   {
     id: 1,
@@ -153,10 +152,12 @@ function createCards() {
           <div class="d-flex justify-content-end">
             <p class="card-text fs-3 text-danger">${item.price} €</p>
           </div>
-          
-          <div class="cardbtn d-flex justify-content-center">
-            <a href="#" class="btn btn-primary">add cart</a>
-          </div>
+
+          <form method="post" class="d-flex flex-column">
+             
+              <input class="w-25 align-self-center fs-3 text-center" type="number" name="number" min="1" value="1">
+              <button type="submit" name="add_to_cart" class="btn btn-primary mt-2">add to cart</button>
+          </form>
         </div>
       </div>
     `;
@@ -168,25 +169,24 @@ function createCards() {
 // Call the createCards function to populate the cards
 createCards();
 
-
-// reseting button       
-document.getElementById("reset").addEventListener("click", function (){
+// reseting button
+document.getElementById("reset").addEventListener("click", function () {
   const cardContainer = document.getElementById("card-container");
-cardContainer.innerHTML = ""; // clear the cards
-createCards();
-})
+  cardContainer.innerHTML = ""; // clear the cards
+  createCards();
+});
 
 // "Business Laptops" button
 document.getElementById("business").addEventListener("click", function () {
-const cardContainer = document.getElementById("card-container");
-cardContainer.innerHTML = ""; // clear the cards
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = ""; // clear the cards
 
-array.forEach((item) => {
-if (item.category === "business laptop") {
-const cardDiv = document.createElement("div");
-cardDiv.className =
-  "col-sm-4 d-flex align-items-center justify-content-center mb-4";
-cardDiv.innerHTML = `
+  array.forEach((item) => {
+    if (item.category === "business laptop") {
+      const cardDiv = document.createElement("div");
+      cardDiv.className =
+        "col-sm-4 d-flex align-items-center justify-content-center mb-4";
+      cardDiv.innerHTML = `
   <div class="card" style="width: 20rem">
     <div class="cardimage d-flex justify-content-center">
       <img src="${item.image}" class="card-img-top w-50" alt="..." />
@@ -210,22 +210,22 @@ cardDiv.innerHTML = `
   </div>
 `;
 
-cardContainer.appendChild(cardDiv);
-}
-});
+      cardContainer.appendChild(cardDiv);
+    }
+  });
 });
 
-// geming laptops
+// gaming laptops
 document.getElementById("gaming").addEventListener("click", function () {
-const cardContainer = document.getElementById("card-container");
-cardContainer.innerHTML = ""; // clear the cards
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = ""; // clear the cards
 
-array.forEach((item) => {
-if (item.category === "gaming laptop") {
-const cardDiv = document.createElement("div");
-cardDiv.className =
-  "col-sm-4 d-flex align-items-center justify-content-center mb-4";
-cardDiv.innerHTML = `
+  array.forEach((item) => {
+    if (item.category === "gaming laptop") {
+      const cardDiv = document.createElement("div");
+      cardDiv.className =
+        "col-sm-4 d-flex align-items-center justify-content-center mb-4";
+      cardDiv.innerHTML = `
   <div class="card" style="width: 20rem">
     <div class="cardimage d-flex justify-content-center">
       <img src="${item.image}" class="card-img-top w-50" alt="..." />
@@ -249,26 +249,26 @@ cardDiv.innerHTML = `
   </div>
 `;
 
-cardContainer.appendChild(cardDiv);
-}
-});
+      cardContainer.appendChild(cardDiv);
+    }
+  });
 });
 // "Increasing Price" button
 document.getElementById("increasePrice").addEventListener("click", function () {
-const cardContainer = document.getElementById("card-container");
-cardContainer.innerHTML = ""; // Önce mevcut kartları temizle
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = ""; // Önce mevcut kartları temizle
 
-// sorting the array
-const sortedArray = array.slice().sort((a, b) => a.price - b.price);
+  // sorting the array
+  const sortedArray = array.slice().sort((a, b) => a.price - b.price);
 
-// clear the cardContainer'
-cardContainer.innerHTML = "";
+  // clear the cardContainer'
+  cardContainer.innerHTML = "";
 
-sortedArray.forEach((item) => {
-const cardDiv = document.createElement("div");
-cardDiv.className =
-"col-sm-4 d-flex align-items-center justify-content-center mb-4";
-cardDiv.innerHTML = `
+  sortedArray.forEach((item) => {
+    const cardDiv = document.createElement("div");
+    cardDiv.className =
+      "col-sm-4 d-flex align-items-center justify-content-center mb-4";
+    cardDiv.innerHTML = `
 <div class="card" style="width: 20rem">
   <div class="cardimage d-flex justify-content-center">
     <img src="${item.image}" class="card-img-top w-50" alt="..." />
@@ -292,25 +292,25 @@ cardDiv.innerHTML = `
 </div>
 `;
 
-cardContainer.appendChild(cardDiv);
-});
+    cardContainer.appendChild(cardDiv);
+  });
 });
 // "Decreasing Price" button
 document.getElementById("decreasePrice").addEventListener("click", function () {
-const cardContainer = document.getElementById("card-container");
-cardContainer.innerHTML = ""; // clear the card
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = ""; // clear the card
 
-// sorting array
-const sortedArray = array.slice().sort((a, b) => b.price - a.price);
+  // sorting array
+  const sortedArray = array.slice().sort((a, b) => b.price - a.price);
 
-// clear the cardContainer
-cardContainer.innerHTML = "";
+  // clear the cardContainer
+  cardContainer.innerHTML = "";
 
-sortedArray.forEach((item) => {
-const cardDiv = document.createElement("div");
-cardDiv.className =
-"col-sm-4 d-flex align-items-center justify-content-center mb-4";
-cardDiv.innerHTML = `
+  sortedArray.forEach((item) => {
+    const cardDiv = document.createElement("div");
+    cardDiv.className =
+      "col-sm-4 d-flex align-items-center justify-content-center mb-4";
+    cardDiv.innerHTML = `
 <div class="card" style="width: 20rem">
   <div class="cardimage d-flex justify-content-center">
     <img src="${item.image}" class="card-img-top w-50" alt="..." />
@@ -334,8 +334,6 @@ cardDiv.innerHTML = `
 </div>
 `;
 
-cardContainer.appendChild(cardDiv);
+    cardContainer.appendChild(cardDiv);
+  });
 });
-});
-
-
