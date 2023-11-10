@@ -86,7 +86,7 @@
                 aria-current="page"
                 href="./cart/index.html"
                 target="_parent"
-                ><i class="fa-solid fa-cart-shopping"></i><span class="text-success mx-1">1</span></i></i></a
+                ><i class="fa-solid fa-cart-shopping"></i><span id="quantity" class="text-danger mx-1"></span></i></i></a
               >
             </li>
           </ul>
@@ -100,5 +100,27 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script>
+      var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+      var totalQuantity = 0;
+
+      for (let i = 0; i < cartItems.length; i++) {
+         totalQuantity += cartItems[i].quantity;
+        }
+
+//console.log("Total Quantity:", totalQuantity);
+var quantityElement = document.getElementById("quantity");
+
+if (totalQuantity === 0) {
+  quantityElement.style.display = "none";
+} else {
+  quantityElement.style.display = "inline"; // veya "inline" ya da istediğiniz diğer görüntüleme türleri
+  quantityElement.innerHTML = totalQuantity;
+}
+
+       
+
+
+    </script>
   </body>
 </html>

@@ -153,11 +153,10 @@ function createCards() {
             <p class="card-text fs-3 text-danger">${item.price} €</p>
           </div>
 
-          <form method="post" class="d-flex flex-column">
-             
-              <input class="w-25 align-self-center fs-3 text-center" type="number" name="number" min="1" value="1">
-              <button type="submit" name="add_to_cart" class="btn btn-primary mt-2">add to cart</button>
-          </form>
+          <form class="d-flex flex-column">
+          <input class="w-25 align-self-center fs-3 text-center" type="number" name="number" min="1" value="1" id="productQuantity-${item.id}">
+          <button type="button" class="btn btn-primary mt-2" onclick="addToCart(${item.id})">Add to Cart</button>
+        </form>
         </div>
       </div>
     `;
@@ -168,6 +167,42 @@ function createCards() {
 
 // Call the createCards function to populate the cards
 createCards();
+
+// Add to Cart function
+function addToCart(productId) {
+  const quantityInput = document.getElementById(`productQuantity-${productId}`);
+  const quantity = parseInt(quantityInput.value);
+
+  if (quantity > 0) {
+    // Check if the product is already in localStorage
+    let cartItems = localStorage.getItem('cartItems');
+    cartItems = cartItems ? JSON.parse(cartItems) : [];
+
+    // Check if the product is already in the cart
+    const existingItem = cartItems.find(item => item.id === productId);
+
+    if (existingItem) {
+      // Update the quantity if the product is already in the cart
+      existingItem.quantity += quantity;
+    } else {
+      // Add the product to the cart if it's not already there
+      const product = array.find(item => item.id === productId);
+      cartItems.push({ id: productId, quantity, title: product.title, price: product.price,image:product.image });
+    }
+
+    // Save the updated cartItems to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+   // Sayfayı yeniden yükle
+   location.reload();
+}
+}
+
+
+
+
+
+
 
 // reseting button
 document.getElementById("reset").addEventListener("click", function () {
@@ -337,3 +372,9 @@ document.getElementById("decreasePrice").addEventListener("click", function () {
     cardContainer.appendChild(cardDiv);
   });
 });
+
+
+
+  
+    
+
