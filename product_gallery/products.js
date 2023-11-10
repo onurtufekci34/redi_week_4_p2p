@@ -126,7 +126,7 @@ const array = [
     },
   },
 ];
-
+ 
 // Function to create and populate cards
 function createCards() {
   const cardContainer = document.getElementById("card-container");
@@ -170,6 +170,14 @@ createCards();
 
 // Add to Cart function
 function addToCart(productId) {
+ 
+  // success notification
+// Shorthand for:
+// alertify.notify( message, 'success', [wait, callback]);
+alertify.success('Product added to cart');
+
+
+
   const quantityInput = document.getElementById(`productQuantity-${productId}`);
   const quantity = parseInt(quantityInput.value);
 
@@ -193,16 +201,15 @@ function addToCart(productId) {
     // Save the updated cartItems to localStorage
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-   // Sayfayı yeniden yükle
-   location.reload();
+
+   
+    
+  //  // Sayfayı yeniden yükle
+  //  location.reload();
+ 
 }
+
 }
-
-
-
-
-
-
 
 // reseting button
 document.getElementById("reset").addEventListener("click", function () {

@@ -100,25 +100,27 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script>
-      var cartItems = JSON.parse(localStorage.getItem("cartItems"));
-      var totalQuantity = 0;
+    <script >
+     
+  var quantitiyItems = JSON.parse(localStorage.getItem("cartItems"));
+  var totalQuantity = 0;
 
-      for (let i = 0; i < cartItems.length; i++) {
-         totalQuantity += cartItems[i].quantity;
-        }
+  for (let i = 0; i < quantitiyItems.length; i++) {
+     totalQuantity += quantitiyItems[i].quantity;
+    }
 
 //console.log("Total Quantity:", totalQuantity);
 var quantityElement = document.getElementById("quantity");
 
 if (totalQuantity === 0) {
-  quantityElement.style.display = "none";
+quantityElement.style.display = "none";
 } else {
-  quantityElement.style.display = "inline"; // veya "inline" ya da istediğiniz diğer görüntüleme türleri
-  quantityElement.innerHTML = totalQuantity;
-}
+quantityElement.style.display = "inline";
+quantityElement.innerHTML = totalQuantity;
+} 
 
-       
+
+
 
 
     </script>
